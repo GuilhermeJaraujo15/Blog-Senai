@@ -364,306 +364,272 @@ body {
   font-weight: 600;
 }
 
-/* Reviews Section */
-/* Removendo estilos antigos de reviews e adicionando novos estilos modernos */
-.comments-section {
-  background-color: var(--white);
-  padding: 5rem 0;
+/* Posts da Comunidade - Estilização moderna e elegante */
+.community-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 2.5rem;
+  margin-top: 3rem;
 }
 
-.comments-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 40px;
-}
-
-.rating {
-  display: flex;
-  align-items: center;
-  background-color: var(--white);
-  padding: 12px 24px;
-  border-radius: 50px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-}
-
-.rating i {
-  color: gold;
-  margin-right: 5px;
-  font-size: 1.1rem;
-  font-style: normal;
-}
-
-.rating span {
-  font-weight: 600;
-  margin-left: 12px;
-  color: var(--black);
-}
-
-.comments-carousel {
+.community-post {
+  background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+  border-radius: 12px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border-left: 5px solid var(--red);
   position: relative;
   overflow: hidden;
-  padding: 20px 0;
-  margin: 0 60px;
 }
 
-.comments-track {
-  display: flex;
-  transition: transform 0.5s ease;
+.community-post::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--red) 0%, #ff4444 100%);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
 }
 
-.comment-card {
-  flex: 0 0 380px;
-  margin: 0 16px;
-  background-color: var(--white);
-  border-radius: 8px;
-  padding: 32px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  position: relative;
+.community-post:hover::before {
+  transform: scaleX(1);
 }
 
-.comment-header {
+.community-post:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 35px rgba(209, 19, 0, 0.15);
+}
+
+.post-header {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 1.75rem;
+  gap: 1.25rem;
 }
 
-.user-avatar {
-  width: 60px;
-  height: 60px;
+.post-avatar {
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   overflow: hidden;
-  margin-right: 20px;
   flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 3px solid var(--white);
+  transition: transform 0.3s ease;
 }
 
-.user-avatar img {
+.community-post:hover .post-avatar {
+  transform: scale(1.05);
+}
+
+.post-avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.user-info h4 {
-  margin-bottom: 8px;
+.post-user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.post-author {
+  font-size: 1.2rem;
+  font-weight: 800;
   color: var(--black);
-  font-size: 1.1rem;
-  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
-.user-info .stars {
-  color: gold;
-  font-size: 1rem;
-}
-
-.comment-text {
-  color: var(--gray-text);
-  line-height: 1.7;
-  margin-bottom: 24px;
-}
-
-/* Sistema de reações */
-.reactions {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 20px;
-  border-top: 1px solid var(--gray-light);
-}
-
-.reaction-buttons {
-  display: flex;
-  gap: 12px;
-}
-
-.reaction-btn {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: none;
-  border: 1px solid var(--gray-light);
-  border-radius: 20px;
-  padding: 6px 12px;
-  font-size: 0.85rem;
-  color: var(--gray-text);
-  cursor: pointer;
-  transition: all 0.2s;
-  font-family: "Montserrat", sans-serif;
-}
-
-.reaction-btn:hover {
-  background-color: var(--gray-light);
-}
-
-.reaction-btn.active {
-  background-color: var(--gray-light);
-  border-color: var(--red);
-  color: var(--red);
-}
-
-.reaction-btn.helpful.active {
-  color: #10b981;
-  border-color: #10b981;
-}
-
-.reaction-btn.not-helpful.active {
-  color: #f59e0b;
-  border-color: #f59e0b;
-}
-
-.reaction-btn i {
-  font-style: normal;
-}
-
-.reaction-count {
-  font-size: 0.8rem;
+.post-date {
+  font-size: 0.875rem;
   color: var(--gray-text);
   font-weight: 500;
 }
 
-.carousel-nav {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
+.post-content {
+  margin-bottom: 1.75rem;
+  position: relative;
 }
 
-.carousel-nav button {
-  background-color: var(--white);
-  border: 1px solid var(--gray-light);
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
+.post-content::before {
+  content: '"';
+  font-size: 4rem;
+  position: absolute;
+  top: -20px;
+  left: -10px;
+  color: rgba(209, 19, 0, 0.1);
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.post-content p {
+  color: var(--gray-text);
+  line-height: 1.85;
+  font-size: 1.025rem;
+  position: relative;
+  z-index: 1;
+}
+
+.post-footer {
   display: flex;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: center;
-  margin: 0 10px;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s;
-  color: var(--black);
-  font-size: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid rgba(0, 0, 0, 0.05);
 }
 
-.carousel-nav button:hover {
-  background-color: var(--red);
+.post-tag {
+  background: linear-gradient(135deg, var(--red) 0%, #c00f00 100%);
   color: var(--white);
-  border-color: var(--red);
+  padding: 0.65rem 1.5rem;
+  border-radius: 25px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 8px rgba(209, 19, 0, 0.25);
+  transition: all 0.3s ease;
 }
 
-.carousel-nav button:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
+.community-post:hover .post-tag {
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(209, 19, 0, 0.35);
 }
 
-.carousel-nav button:disabled:hover {
-  background-color: var(--white);
-  color: var(--black);
-  border-color: var(--gray-light);
+/* Todos os estilos de avaliações removidos */
+
+/* Team Page Styles */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 3rem;
+  margin-top: 3rem;
 }
 
-/* Sistema de avaliação por estrelas */
-.star-rating {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-  margin: 10px 0;
+.team-member {
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border-top: 4px solid var(--red);
 }
 
-.star-rating input {
-  display: none;
+.team-member:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 35px rgba(209, 19, 0, 0.2);
 }
 
-.star-rating label {
-  font-size: 1.8rem;
-  color: #ddd;
-  cursor: pointer;
-  transition: color 0.2s;
-  margin-right: 5px;
-}
-
-.star-rating label:hover,
-.star-rating label:hover ~ label,
-.star-rating input:checked ~ label {
-  color: gold;
-}
-
-.rating-label {
-  font-weight: 500;
-  color: var(--black);
-  margin-bottom: 8px;
-  display: block;
-}
-
-/* Formulário de comentários - Design moderno */
-.add-comment {
-  background-color: var(--white);
-  border-radius: 8px;
-  padding: 40px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  max-width: 700px;
-  margin: 50px auto 0;
-}
-
-.add-comment h3 {
-  margin-bottom: 25px;
-  color: var(--black);
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-
-.form-group {
-  margin-bottom: 25px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: 500;
-  color: var(--black);
-}
-
-.form-group input,
-.form-group textarea {
+.member-image {
   width: 100%;
-  padding: 14px 18px;
-  border: 1px solid var(--gray-light);
-  border-radius: 4px;
-  font-size: 1rem;
-  transition: border-color 0.3s, box-shadow 0.3s;
-  font-family: "Montserrat", sans-serif;
+  height: 320px;
+  overflow: hidden;
+  position: relative;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: var(--red);
-  box-shadow: 0 0 0 3px rgba(209, 19, 0, 0.1);
+.member-image::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
 }
 
-.form-group textarea {
-  min-height: 140px;
-  resize: vertical;
+.member-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-.submit-btn {
-  background-color: var(--red);
-  color: var(--white);
-  border: none;
-  padding: 14px 30px;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s;
-  display: block;
-  margin: 0 auto;
+.team-member:hover .member-image img {
+  transform: scale(1.08);
+}
+
+.member-content {
+  padding: 2.5rem;
+}
+
+.member-name {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--black);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.member-role {
+  color: var(--red);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.member-description {
+  color: var(--gray-text);
+  line-height: 1.8;
+  margin-bottom: 1.75rem;
+  font-size: 1.025rem;
+}
+
+.member-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.skill-tag {
+  background: var(--gray-light);
+  color: var(--black);
+  padding: 0.5rem 1.25rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
   font-weight: 600;
-  font-family: "Montserrat", sans-serif;
+  transition: all 0.3s ease;
 }
 
-.submit-btn:hover {
-  background-color: #a00f00;
+.team-member:hover .skill-tag {
+  background: var(--red);
+  color: var(--white);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(209, 19, 0, 0.3);
+}
+
+/* Thanks Section */
+.thanks-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.thanks-text {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.2rem;
+  line-height: 1.9;
+  margin: 2rem 0 3rem;
+}
+
+/* Active nav link */
+.nav-link.active {
+  color: var(--red);
+  position: relative;
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--red);
 }
 
 /* Footer */
@@ -681,39 +647,39 @@ body {
     grid-template-columns: 1fr;
   }
 
-  /* Adicionando responsividade para a nova estrutura de comentários */
-  .comments-carousel {
-    margin: 0 20px;
-  }
-
-  .comment-card {
-    flex: 0 0 300px;
-  }
-
-  .carousel-nav button {
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
-  }
-
-  .add-comment {
-    padding: 30px 20px;
-  }
-
-  .reviews-carousel {
-    grid-template-columns: 1fr;
-  }
-
-  .carousel-btn {
-    display: none;
-  }
-
   #navbar .container {
     gap: 1rem;
   }
 
   .nav-link {
     font-size: 0.85rem;
+  }
+
+  .community-posts-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .community-post {
+    padding: 2rem;
+  }
+
+  /* Add team grid responsive */
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .member-image {
+    height: 280px;
+  }
+
+  .member-content {
+    padding: 2rem;
+  }
+
+  .member-name {
+    font-size: 1.5rem;
   }
 }
 
@@ -726,7 +692,33 @@ body {
     font-size: 1.8rem;
   }
 
-  .review-form-container {
+  .community-post {
     padding: 1.5rem;
+  }
+
+  .post-avatar {
+    width: 56px;
+    height: 56px;
+  }
+
+  .post-author {
+    font-size: 1.1rem;
+  }
+
+  /* Add team member responsive */
+  .member-content {
+    padding: 1.5rem;
+  }
+
+  .member-name {
+    font-size: 1.3rem;
+  }
+
+  .member-role {
+    font-size: 0.95rem;
+  }
+
+  .thanks-text {
+    font-size: 1.05rem;
   }
 }
