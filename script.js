@@ -226,4 +226,3 @@ postsExistentes.forEach(post => {
         post.dataset.likes = likeCount.textContent;
     });
 });
-
