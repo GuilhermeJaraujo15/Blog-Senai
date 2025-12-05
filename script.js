@@ -13,9 +13,9 @@ const podcasts = [
 
 function pausarTodos() {
     podcasts.forEach(p => {
-        p.audio.pause();
-        p.audio.currentTime = 0;
-        p.button.textContent = "▶";  // botão volta para play
+        p.audio.pause(); //Pausa o áudio
+        p.audio.currentTime = 0; //Reinicia o tempo para 0
+        p.button.textContent = "▶";  // Botão o texto do botão de volta para play
     });
 }
 
@@ -40,6 +40,12 @@ podcasts.forEach(p => {
     p.audio.addEventListener('ended', () => {
         p.button.textContent = "▶";
     });
+
+    //audio.paused: Propriedade nativa do HTML5 que retorna true se pausado; 
+    //audio.currentTime = 0: Reinicia para o início (0 segundos); 
+    //audio.play() / audio.pause(): Métodos nativos da API de Áudio; 
+    //audio.addEventListener('ended', ...): Evento disparado ao término.
+    
 });
 
 const nome = document.getElementById('nome');
@@ -220,3 +226,4 @@ postsExistentes.forEach(post => {
         post.dataset.likes = likeCount.textContent;
     });
 });
+

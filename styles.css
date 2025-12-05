@@ -402,7 +402,7 @@ body {
 
 .course-card img {
   width: 100%;
-  height: 220px;
+  height: 280px;
   object-fit: cover;
 }
 
@@ -508,34 +508,38 @@ body {
 }
 
 .community-posts-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-  gap: 2.5rem;
-  margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+    align-items: stretch; /* Garante que todos os itens tenham a mesma altura */
 }
 
 .community-post {
-  background: var(--white);
-  border-radius: 12px;
-  padding: 2.5rem;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-  border-top: 4px solid var(--red);
-  position: relative;
-  overflow: hidden;
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border-top: 4px solid var(--red);
+    position: relative;
+    overflow: hidden;
+    display: flex; /* Mudança importante: flex container */
+    flex-direction: column; /* Organiza os elementos verticalmente */
+    height: 100%; /* Ocupa toda a altura disponível */
 }
 
 .community-post::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(135deg, transparent 50%, rgba(209, 19, 0, 0.03) 50%);
-  pointer-events: none;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, transparent 50%, rgba(209, 19, 0, 0.03) 50%);
+    pointer-events: none;
+    z-index: 1; /* Garantir que fique atrás do conteúdo */
 }
-
 .community-post:hover {
   transform: translateY(-6px);
   box-shadow: 0 12px 28px rgba(209, 19, 0, 0.15);
@@ -543,13 +547,13 @@ body {
 }
 
 .post-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1.75rem;
-  gap: 1.25rem;
-  position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.75rem;
+    gap: 1.25rem;
+    position: relative;
+    flex-shrink: 0; /* Não encolhe */
 }
-
 .post-avatar {
   width: 60px;
   height: 60px;
@@ -592,23 +596,30 @@ body {
 }
 
 .post-content {
-  margin-bottom: 1.75rem;
-  position: relative;
+    margin-bottom: 1.75rem;
+    position: relative;
+    flex-grow: 1; /* O conteúdo ocupa todo o espaço disponível */
+    display: flex;
+    flex-direction: column;
 }
 
 .post-content p {
-  color: var(--gray-text);
-  line-height: 1.8;
-  font-size: 1rem;
+    color: var(--gray-text);
+    line-height: 1.8;
+    font-size: 1rem;
+    flex-grow: 1; /* O texto ocupa o espaço disponível */
+    margin-bottom: 0; /* Remover margin-bottom para não criar espaço extra */
 }
 
 .post-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 1.5rem;
-  border-top: 2px solid var(--gray-light);
-  gap: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--gray-light);
+    gap: 1rem;
+    flex-shrink: 0; /* Não encolhe */
+    margin-top: auto; /* Empurra o footer para o rodapé */
 }
 
 .post-tag {
@@ -683,19 +694,25 @@ body {
 
 /* Trash Icon */
 .trash-icon {
-  width: 28px;
-  height: 28px;
-  cursor: pointer;
-  margin-left: auto;
-  opacity: 0.5;
-  transition: all 0.3s ease;
-  filter: brightness(0.3);
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    margin-left: auto;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+    filter: brightness(0.3);
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2; /* Fica acima do gradiente */
 }
+
+
 
 .trash-icon:hover {
   opacity: 1;
-  transform: scale(1.15);
-  filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(5283%) hue-rotate(358deg);
+  filter: saturate(100%) invert(14%) sepia(97%) saturate(5283%) hue-rotate(358deg);
 }
 
 /* Formulário de Adicionar Post */
@@ -793,19 +810,23 @@ body {
 /* Team Page Styles */
 
 .team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  gap: 3rem;
-  margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+    align-items: stretch; /* Garante altura igual */
 }
 
 .team-member {
-  background: var(--white);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-  border-top: 4px solid var(--red);
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border-top: 4px solid var(--red);
+    display: flex; /* Transforma em container flex */
+    flex-direction: column; /* Organiza verticalmente */
+    height: 100%; /* Ocupa toda altura disponível */
 }
 
 .team-member:hover {
@@ -814,81 +835,98 @@ body {
 }
 
 .member-image {
-  width: 100%;
-  height: 520px;
-  overflow: hidden;
-  position: relative;
+    width: 100%;
+    height: 520px;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0; /* Não encolhe */
 }
 
+
 .member-image::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 190px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 190px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
 }
 
 .member-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
 }
+
 
 .team-member:hover .member-image img {
   transform: scale(1.08);
 }
 
 .member-content {
-  padding: 2.5rem;
+    padding: 2.5rem;
+    display: flex; /* Container flex */
+    flex-direction: column; /* Organiza verticalmente */
+    flex-grow: 1; /* Ocupa espaço disponível */
 }
 
 .member-name {
-  font-size: 1.75rem;
-  font-weight: 800;
-  color: var(--black);
-  margin-bottom: 0.5rem;
-  letter-spacing: -0.02em;
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--black);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+    flex-shrink: 0; /* Não encolhe */
 }
 
+
 .member-role {
-  color: var(--red);
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: 1.25rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+    color: var(--red);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    flex-shrink: 0; /* Não encolhe */
 }
 
 .member-description {
-  color: var(--gray-text);
-  line-height: 1.8;
-  margin-bottom: 1.75rem;
-  font-size: 1.025rem;
+    color: var(--gray-text);
+    line-height: 1.8;
+    margin-bottom: 1.75rem;
+    font-size: 1.025rem;
+    flex-grow: 1; /* Ocupa espaço disponível, empurra skills para baixo */
 }
 
+
 .member-skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: auto; /* Empurra para o rodapé */
+    flex-shrink: 0; /* Não encolhe */
+    padding-top: 1.5rem; /* Espaço acima */
+    border-top: 1px solid rgba(0, 0, 0, 0.05); /* Linha sutil de separação */
 }
 
 .skill-tag {
-  background: var(--gray-light);
-  color: var(--black);
-  padding: 0.5rem 1.25rem;
-  border-radius: 20px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
+    background: var(--gray-light);
+    color: var(--black);
+    padding: 0.5rem 1.25rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+    white-space: nowrap; /* Evita quebra de linha nas tags */
 }
 
 .team-member:hover .skill-tag {
-  background: var(--red);
-  color: var(--white);
-  transform: translateY(-2px);
+    background: var(--red);
+    color: var(--white);
+    transform: translateY(-2px);
 }
 
 /* Thanks Section */
@@ -981,26 +1019,26 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
   }
 
-  .team-grid {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-  }
-
-  .member-image {
-    height: 260px;
-  }
-
-  .member-content {
-    padding: 2rem;
-  }
-
-  .member-name {
-    font-size: 1.55rem;
-  }
-
-  .member-description {
-    font-size: 0.95rem;
-  }
+    .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+    }
+    
+    .member-image {
+        height: 260px;
+    }
+    
+    .member-content {
+        padding: 2rem;
+    }
+    
+    .member-name {
+        font-size: 1.55rem;
+    }
+    
+    .member-description {
+        font-size: 0.95rem;
+    }
 }
 
 /* --- Melhor ajustes no header/nav para telas pequenas --- */
@@ -1036,10 +1074,26 @@ body {
     margin-bottom: 2rem;
   }
 
-  .community-posts-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
+    .community-post {
+        padding: 1.75rem;
+    }
+    
+    .post-footer {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    
+    .post-tag {
+        order: 1;
+        width: 100%;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+    
+    .like-area {
+        order: 2;
+        margin-left: auto;
+    }
 
   .news-card img,
   .course-card img {
@@ -1055,35 +1109,30 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .team-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .member-image {
-    height: 240px;
-  }
-
-  .member-content {
-    padding: 1.75rem;
-  }
-
-  .member-name {
-    font-size: 1.45rem;
-  }
-
-  .member-role {
-    font-size: 1rem;
-  }
-
-  .member-description {
-    font-size: 0.95rem;
-  }
-
-  .skill-tag {
-    font-size: 0.8rem;
-    padding: 0.45rem 1rem;
-  }
+     .team-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .member-image {
+        height: 240px;
+    }
+    
+    .member-content {
+        padding: 1.75rem;
+    }
+    
+    .member-name {
+        font-size: 1.45rem;
+    }
+    
+    .member-description {
+        font-size: 0.95rem;
+    }
+    
+    .member-skills {
+        padding-top: 1.25rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1103,40 +1152,59 @@ body {
     padding: 2px 3px;
     white-space: nowrap; /* impede quebra de palavras feias */
   }
+
+      .community-post {
+        padding: 1.25rem;
+    }
+    
+    .post-header {
+        flex-wrap: wrap;
+    }
+    
+    .post-user-info {
+        padding-right: 0;
+    }
+    
+    .trash-icon {
+        position: static;
+        transform: none;
+        order: 3;
+        width: 24px;
+        height: 24px;
+    }
 }
 
 /* --- Smartphones pequenos (até 430px) --- */
 @media (max-width: 430px) {
-  .team-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .member-image {
-    height: 200px;
-  }
-
-  .member-content {
-    padding: 1.5rem;
-  }
-
-  .member-name {
-    font-size: 1.25rem;
-  }
-
-  .member-role {
-    font-size: 0.9rem;
-  }
-
-  .member-description {
-    font-size: 0.9rem;
-    line-height: 1.6;
-  }
-
-  .skill-tag {
-    font-size: 0.75rem;
-    padding: 0.4rem 0.9rem;
-  }
+     .team-grid {
+        gap: 1.5rem;
+    }
+    
+    .member-image {
+        height: 200px;
+    }
+    
+    .member-content {
+        padding: 1.5rem;
+    }
+    
+    .member-name {
+        font-size: 1.25rem;
+    }
+    
+    .member-role {
+        font-size: 0.9rem;
+    }
+    
+    .member-description {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+    
+    .skill-tag {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.9rem;
+    }
 }
 
 /* --- Telas muito pequenas (até 390px) --- */
@@ -1186,27 +1254,27 @@ body {
 
 @media (max-width: 360px) {
   .member-image {
-    height: 180px;
-  }
-
-  .member-content {
-    padding: 1.25rem;
-  }
-
-  .member-name {
-    font-size: 1.15rem;
-  }
-
-  .member-role {
-    font-size: 0.85rem;
-  }
-
-  .member-description {
-    font-size: 0.85rem;
-  }
-
-  .skill-tag {
-    padding: 0.35rem 0.8rem;
-    font-size: 0.7rem;
-  }
+        height: 180px;
+    }
+    
+    .member-content {
+        padding: 1.25rem;
+    }
+    
+    .member-name {
+        font-size: 1.15rem;
+    }
+    
+    .member-role {
+        font-size: 0.85rem;
+    }
+    
+    .member-description {
+        font-size: 0.85rem;
+    }
+    
+    .skill-tag {
+        padding: 0.35rem 0.8rem;
+        font-size: 0.7rem;
+    }
 }
