@@ -190,7 +190,7 @@ function ordenarPosts(direcao) {
     posts.forEach(post => grid.appendChild(post));
 }
 
-// Ordenar por data
+// Ordenar por data //
 function ordenarPorData(tipo) {
     const posts = Array.from(document.querySelectorAll('.community-post'));
     posts.sort((a, b) => {
@@ -201,7 +201,7 @@ function ordenarPorData(tipo) {
     posts.forEach(post => grid.appendChild(post));
 }
 
-// Seleciona todos os posts já existentes
+// Seleciona todos os posts já existentes //
 const postsExistentes = document.querySelectorAll('.community-post');
 
 postsExistentes.forEach(post => {
