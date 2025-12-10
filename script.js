@@ -71,15 +71,9 @@ addComunidade.addEventListener("click", () => {
   // VALIDAÇÃO DO EMAIL
   const emailValor = email.value.trim();
 
-<<<<<<< HEAD
   if (!emailValor.endsWith("@aluno.senai.br")) { // O "endsWith", analisa somente o final de uma string, pegando o length de toda string, e subtraindo pelos caracteres da palavra desejada a encontrar-se no final,e assim confere se o texto posto se encontra, em exato, no final, isto é, no caractere encontrado a partir da subtração entre o length total com o length do texto almejado em encontra-se.//
     alert(
       "Apenas e-mails institucionais (@aluno.senai.br) podem enviar comentários."
-=======
-  if (!emailValor.endsWith("@aluno.senai.org.br")) { // O "endsWith", analisa somente o final de uma string, pegando o length de toda string, e subtraindo pelos caracteres da palavra desejada a encontrar-se no final,e assim confere se o texto posto se encontra, em exato, no final, isto é, no caractere encontrado a partir da subtração entre o length total com o length do texto almejado em encontra-se.//
-    alert(
-      "Apenas e-mails institucionais (@aluno.senai.org.br) podem enviar comentários."
->>>>>>> 1a534093f8f124f38dc79ffb2d437382dba0949c
     );
     return; // impede o envio
   }
